@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Intelligent Task Allocation System</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Intelligent Task Allocation System</h1>
+        <form id="taskForm">
+            <label for="tasks">Tasks (comma-separated):</label>
+            <input type="text" id="tasks" placeholder="Example: Task1, Task2, Task3" required>
+            
+            <label for="resources">Resources (comma-separated):</label>
+            <input type="text" id="resources" placeholder="Example: Resource1, Resource2" required>
+            
+            <button type="submit">Allocate Tasks</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
