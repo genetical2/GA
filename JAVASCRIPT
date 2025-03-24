@@ -1,0 +1,35 @@
+document.getElementById('taskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const tasks = document.getElementById('tasks').value.split(',').map(task => task.trim());
+    const resources = document.getElementById('resources').value.split(',').map(resource => resource.trim());
+
+    const allocation = allocateTasks(tasks, resources);
+    displayResult(allocation);
+});
+
+function allocateTasks(tasks, resources) {
+    const allocation = {};
+    const numResources = resources.length;
+
+    tasks.forEach((task, index) => {
+        const resourceIndex = index % numResources; // Simple round-robin allocation
+        const resource = resources[resourceIndex];
+
+        if (!allocation[resource]) {
+            allocation[resource] = [];
+        }
+        allocation[resource].push(task);
+    });
+
+    return allocation;
+}
+
+function displayResult(allocation) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Clear previous results
+
+    for (const resource in allocation) {
+        resultDiv.innerHTML += `<p><strong>${resource}:</strong> ${allocation[resource].join(', ')}</p>`;
+    }
+}
